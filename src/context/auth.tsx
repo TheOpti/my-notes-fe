@@ -12,7 +12,7 @@ function AuthProvider(props) {
       try {
         const response: any = await axios('http://localhost:3000/me', { withCredentials: true });
         const { user } = response.data;
-        
+
         setLoading(false);
         setUserData(user);
       } catch (err) {
@@ -42,10 +42,10 @@ function AuthProvider(props) {
     const response = await axios.post('http://localhost:3000/logout', {}, { withCredentials: true });
     console.log('Response from logout', response);
     setUserData(null);
-  };  
+  };
 
   return (
-    <AuthContext.Provider 
+    <AuthContext.Provider
       value={{ data: userData, login, logout }}
     >
       { props.children }
@@ -57,6 +57,6 @@ const useAuth = () => React.useContext(AuthContext);
 
 export {
   AuthContext,
-  AuthProvider, 
+  AuthProvider,
   useAuth
 }

@@ -66,7 +66,7 @@ class Login extends PureComponent {
     return (
       <div className={styles.login}>
         <div className={styles.root}>
-          <Logo 
+          <Logo
             customClassName={styles.logo}
             size="large"
           />
@@ -83,9 +83,9 @@ class Login extends PureComponent {
 
             <div className={styles.oneThird}>
               <div className={styles.sectionTitle}>
-                { switcherSectionTitle } 
+                { switcherSectionTitle }
               </div>
-              <Button 
+              <Button
                 onClickHandler={this.switchActiveSection}
                 classname={styles.switcherBtn}
                 label={switcherBtnTitle}
@@ -99,7 +99,7 @@ class Login extends PureComponent {
               </div>
               <AuthContext.Consumer>
                 {({ login }: any) => (
-                  <LoginForm 
+                  <LoginForm
                     handleLogin={login}
                   />
                 )}

@@ -1,6 +1,7 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
   extends: [
+  	'prettier',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended'
   ],
@@ -12,7 +13,8 @@ module.exports = {
     }
   },
   rules: {
-    '@typescript-eslint/no-empty-function': 0
+    '@typescript-eslint/no-empty-function': 0,
+		'quotes': [1, 'single'],
   },
   settings: {
     react: {
