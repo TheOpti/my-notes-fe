@@ -4,54 +4,54 @@ import Input from 'components/Input';
 
 import styles from './styles.css';
 
-type LoginFormPropsType = {
-  handleLogin: any,
+type PropsType = {
+  handleLogin: (login: string, password: string) => Promise<string>,
 }
 
-type LoginFormStateType = {
+type StateType = {
   loginFormFields: {
     [fieldName: string]: string;
   };
   loading: boolean;
-  errorMesage: string;
+	errorMessage: string;
 }
 
-class LoginForm extends Component<LoginFormPropsType, LoginFormStateType> {
+class LoginForm extends Component<PropsType, StateType> {
   state = {
     loginFormFields: {
       login: '',
       password: '',
     },
-    errorMesage: '',
+		errorMessage: '',
     loading: false
   };
 
-  loginToApplication = async () => {
+  loginToApplication = async (): Promise<void> => {
     const { handleLogin } = this.props;
     const { loginFormFields: { login, password } } = this.state;
 
     this.setState({ loading: true }, async () => {
       try {
         const response = await handleLogin(login, password);
-        this.setState({ errorMesage: response, loading: false });
+        this.setState({ errorMessage: response, loading: false });
       } catch (error) {
-        this.setState({ errorMesage: error })
+        this.setState({ errorMessage: error })
       }
     });
   }
 
-  updateField = (fieldName: string, value: string) => {
+  updateField = (fieldName: string, value: string): void => {
     this.setState((prevState) => ({
       ...prevState,
-      loginFormFields: { 
+      loginFormFields: {
         ...prevState.loginFormFields,
         [fieldName]: value,
       },
     }));
   };
 
-  render() {
-    const { loginFormFields: { login, password }, errorMesage } = this.state;
+  render(): React.ReactNode {
+    const { loginFormFields: { login, password }, errorMessage } = this.state;
 
     return (
       <div className={styles.root}>
@@ -67,14 +67,14 @@ class LoginForm extends Component<LoginFormPropsType, LoginFormStateType> {
           value={password}
           handleChange={this.updateField}
         />
-        <Button 
+        <Button
           onClickHandler={this.loginToApplication}
           label="Login"
           classname={styles.login}
         />
-        {errorMesage && (
+        {errorMessage && (
           <div className={styles.errorMessage}>
-            { errorMesage }
+            { errorMessage }
           </div>
         )}
       </div>

@@ -2,10 +2,14 @@ import React, { PureComponent } from 'react';
 import cx from 'classnames';
 
 import { AuthContext } from 'context/auth';
+
+import type { AuthContextType } from 'types/context';
+
 import Logo from 'components/Logo';
 import Button from 'components/Button';
 import LoginForm from 'containers/LoginForm';
 import RegisterForm from 'containers/RegisterForm';
+
 import styles from './styles.css';
 
 const FORM_TYPES = {
@@ -18,27 +22,17 @@ class Login extends PureComponent {
     activeForm: FORM_TYPES.LOGIN,
   }
 
-  setLoginFormAsActive = () => {
-    console.log('setRegisterFormAsActive');
-    this.setState({ activeForm: FORM_TYPES.LOGIN, });
-  }
-
-  setRegisterFormAsActive = () => {
-    console.log('setRegisterFormAsActive');
-    this.setState({ activeForm: FORM_TYPES.REGISTER, });
-  }
-
-  switchActiveSection = () => {
+  switchActiveSection = (): void => {
     const { activeForm } = this.state;
 
     if (activeForm === FORM_TYPES.REGISTER) {
-      this.setLoginFormAsActive();
+			this.setState({ activeForm: FORM_TYPES.LOGIN, });
     } else {
-      this.setRegisterFormAsActive();
+			this.setState({ activeForm: FORM_TYPES.REGISTER, });
     }
   }
 
-  render() {
+  render(): React.ReactNode {
     const { activeForm } = this.state;
 
     const registerFormActive = activeForm === FORM_TYPES.REGISTER;
@@ -98,7 +92,7 @@ class Login extends PureComponent {
                 No, I am already registered:
               </div>
               <AuthContext.Consumer>
-                {({ login }: any) => (
+                {({ login }: AuthContextType) => (
                   <LoginForm
                     handleLogin={login}
                   />

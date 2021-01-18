@@ -7,12 +7,12 @@ type IconPropsType = {
   size?: string;
   customClassName?: string;
 }
-const Icon: React.SFC<IconPropsType> = (props: IconPropsType) => {
+const Icon: React.FC<IconPropsType> = (props: IconPropsType) => {
   const { name, size, customClassName } = props;
 
   const iconClasses = cx(
-    styles.root, 
-    styles[size], 
+    styles.root,
+    styles[size],
     styles[name],
     customClassName
   );

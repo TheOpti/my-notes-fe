@@ -8,7 +8,7 @@ type LogoPropsType = {
   size?: string,
   customClassName?: string,
 }
-const Logo: React.SFC<LogoPropsType> = (props: LogoPropsType) => {
+const Logo: React.FC<LogoPropsType> = (props: LogoPropsType) => {
   const { withTitle, size, customClassName } = props;
 
   const logoClasses = cx(styles.root, customClassName);
@@ -16,9 +16,9 @@ const Logo: React.SFC<LogoPropsType> = (props: LogoPropsType) => {
 
   return (
     <div className={logoClasses}>
-      <img 
-        className={imageClasses} 
-        alt="logo" 
+      <img
+        className={imageClasses}
+        alt="logo"
         src={logo}
       />
       { withTitle && (

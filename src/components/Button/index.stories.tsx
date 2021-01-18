@@ -8,7 +8,7 @@ const btnWrapperStyle = {
 };
 
 storiesOf('Button', module)
-  .add('all buttons', (): any => (
+  .add('all buttons', (): React.ReactNode => (
     <>
       <div style={btnWrapperStyle}>
         <Button label="Raised button" color="raised" />

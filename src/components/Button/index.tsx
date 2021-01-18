@@ -7,13 +7,13 @@ import styles from './styles.css';
 
 type ButtonPropsType = {
   label: string;
-  onClickHandler?: (event: any) => void;
+  onClickHandler?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   color?: 'raised' | 'outlined';
   classname?: string,
   disabled?: boolean,
   loading?: boolean,
 }
-const Button: React.SFC<ButtonPropsType> = (props: ButtonPropsType) => {
+const Button: React.FC<ButtonPropsType> = (props: ButtonPropsType) => {
   const { label, onClickHandler, color, classname, disabled, loading } = props;
 
   const btnClasses = cx(styles.root, styles[color], classname, {
@@ -25,7 +25,7 @@ const Button: React.SFC<ButtonPropsType> = (props: ButtonPropsType) => {
   };
 
   return (
-    <button 
+    <button
       onClick={onClickHandler}
       className={btnClasses}
       type="button"

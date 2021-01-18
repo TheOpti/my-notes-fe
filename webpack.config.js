@@ -60,6 +60,7 @@ module.exports = {
       containers: path.resolve(__dirname, 'src/containers/'),
       context: path.resolve(__dirname, 'src/context/'),
       pages: path.resolve(__dirname, 'src/pages/'),
+      types: path.resolve(__dirname, 'src/types/'),
       images: path.resolve(__dirname, 'src/assets/images/'),
     }
   },

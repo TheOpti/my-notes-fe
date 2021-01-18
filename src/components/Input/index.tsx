@@ -4,13 +4,13 @@ import styles from './styles.css';
 type InputPropsType = {
   label: string;
   name: string;
-  handleChange?: (event: any, value: string) => void;
+  handleChange?: (event: string, value: string) => void;
   value?: string;
   error?: string;
   formSubmitted?: boolean;
 }
-const Input: React.SFC<InputPropsType> = (props: InputPropsType) => {
-  const { 
+const Input: React.FC<InputPropsType> = (props: InputPropsType) => {
+  const {
     label, name, handleChange,
     value, error, formSubmitted
   } = props;
@@ -27,10 +27,10 @@ const Input: React.SFC<InputPropsType> = (props: InputPropsType) => {
   };
 
   const canShowError = visited || formSubmitted;
-  
+
   return (
     <div className={styles.root}>
-      <input 
+      <input
         className={styles.input}
         onChange={updateFormValue}
         onBlur={onBlurHandler}
@@ -42,7 +42,7 @@ const Input: React.SFC<InputPropsType> = (props: InputPropsType) => {
         { label }
       </label>
       <div className={styles.errorMsg}>
-        { canShowError && error } 
+        { canShowError && error }
       </div>
     </div>
   );

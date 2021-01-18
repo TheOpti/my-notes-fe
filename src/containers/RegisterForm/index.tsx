@@ -3,28 +3,30 @@ import Button from 'components/Button';
 import Input from 'components/Input';
 import styles from './styles.css';
 
-type RegisterFormStateType = {
+type PropsType = Record<string, never>;
+
+type StateType = {
   [fieldName: string]: string
 }
 
-class RegisterForm extends Component<{}, RegisterFormStateType> {
+class RegisterForm extends Component<PropsType, StateType> {
   state = {
     login: '',
     password: '',
     passwordRepeated: '',
   };
 
-  updateField = (fieldName: string, value: string) => {
+  updateField = (fieldName: string, value: string): void => {
     this.setState({
       [fieldName]: value,
     });
   };
 
-  register = () => {
+  register = (): void => {
     console.log('Register function');
   };
 
-  render() {
+  render(): React.ReactNode {
     const { login, password, passwordRepeated } = this.state;
 
     return (
@@ -47,7 +49,7 @@ class RegisterForm extends Component<{}, RegisterFormStateType> {
           value={passwordRepeated}
           handleChange={this.updateField}
         />
-        <Button 
+        <Button
           onClickHandler={this.register}
           label="Create new account"
           classname={styles.registerBtn}

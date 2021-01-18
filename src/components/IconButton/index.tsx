@@ -6,15 +6,15 @@ import styles from './styles.css';
 type IconButtonPropsType = {
   iconName: string;
   customClassName?: string;
-  onClick: Function;
+  onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
-const IconButton: React.SFC<IconButtonPropsType> = (props: IconButtonPropsType) => {
-  const { iconName, customClassName } = props;
+const IconButton: React.FC<IconButtonPropsType> = (props: IconButtonPropsType) => {
+  const { iconName, customClassName, onClick } = props;
 
   const iconButtonClasses = cx(styles.root, customClassName);
 
   return (
-    <div className={iconButtonClasses}>
+    <div className={iconButtonClasses} onClick={onClick}>
       <Icon
         name={iconName}
         customClassName={styles.icon}

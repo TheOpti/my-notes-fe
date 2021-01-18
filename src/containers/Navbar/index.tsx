@@ -3,20 +3,23 @@ import IconButton from 'components/IconButton';
 import Logo from 'components/Logo';
 import styles from './styles.css';
 
-type NavbarPropsType = {
-}
-class Navbar extends PureComponent<NavbarPropsType, {}> {
-  render() {
+
+type PropsType = Record<string, never>;
+
+type StateType = Record<string, never>;
+
+class Navbar extends PureComponent<PropsType, StateType> {
+  render(): React.ReactNode {
     return (
       <div className={styles.root}>
-        <IconButton 
+        <IconButton
           iconName="menu"
           onClick={() => {}}
           customClassName={styles.iconButton}
         />
-        <Logo 
+        <Logo
           customClassName={styles.logo}
-          withTitle 
+          withTitle
           size="small"
         />
         <div className={styles.input}>
@@ -39,7 +42,7 @@ class Navbar extends PureComponent<NavbarPropsType, {}> {
             customClassName={styles.iconButton}
           />
         </div>
-        <IconButton 
+        <IconButton
           iconName="user"
           onClick={() => {}}
           customClassName={styles.iconButton}
