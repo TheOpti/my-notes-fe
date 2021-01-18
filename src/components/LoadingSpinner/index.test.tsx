@@ -3,9 +3,9 @@ import { mount } from 'enzyme';
 import LoadingSpinner from './';
 
 describe('LoadingSpinner', () => {
-  it('should render correctly without any issues', () => {
-    const wrapper = mount(<LoadingSpinner size="medium" />);
+	it('should render correctly without any issues', () => {
+		const wrapper = mount(<LoadingSpinner size="medium" />);
 
-    expect(wrapper).toMatchSnapshot();
-  });
+		expect(wrapper).toMatchSnapshot();
+	});
 });

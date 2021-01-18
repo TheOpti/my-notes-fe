@@ -5,36 +5,25 @@ import Button from './';
 const noop = () => {};
 
 describe('Button', () => {
-  it('should render correctly without any issues', () => {
-    const wrapper = mount(<Button
-      label="Label"
-      onClickHandler={noop}
-    />);
+	it('should render correctly without any issues', () => {
+		const wrapper = mount(<Button label="Label" onClickHandler={noop} />);
 
-    expect(wrapper).toMatchSnapshot();
-  });
+		expect(wrapper).toMatchSnapshot();
+	});
 
-  it('should call onClickHandler function when button is actually clicked', () => {
-    const mockFunction = jest.fn();
+	it('should call onClickHandler function when button is actually clicked', () => {
+		const mockFunction = jest.fn();
 
-    const wrapper = mount(<Button
-      label="Label"
-      onClickHandler={mockFunction}
-      disabled
-    />);
+		const wrapper = mount(<Button label="Label" onClickHandler={mockFunction} disabled />);
 
-    wrapper.find('button').simulate('click');
-    expect(mockFunction).toHaveBeenCalled();
-  });
+		wrapper.find('button').simulate('click');
+		expect(mockFunction).toHaveBeenCalled();
+	});
 
-  it('should render disabled button when "disabled" property is set to true', () => {
-    const wrapper = mount(<Button
-      label="Label"
-      onClickHandler={noop}
-      disabled
-    />);
+	it('should render disabled button when "disabled" property is set to true', () => {
+		const wrapper = mount(<Button label="Label" onClickHandler={noop} disabled />);
 
-    const containsDisabled = wrapper.find('button').html().includes('disabled');
-    expect(containsDisabled).toBe(true);
-  });
+		const containsDisabled = wrapper.find('button').html().includes('disabled');
+		expect(containsDisabled).toBe(true);
+	});
 });

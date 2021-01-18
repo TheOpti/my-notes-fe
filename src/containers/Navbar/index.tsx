@@ -3,53 +3,26 @@ import IconButton from 'components/IconButton';
 import Logo from 'components/Logo';
 import styles from './styles.css';
 
-
 type PropsType = Record<string, never>;
 
 type StateType = Record<string, never>;
 
 class Navbar extends PureComponent<PropsType, StateType> {
-  render(): React.ReactNode {
-    return (
-      <div className={styles.root}>
-        <IconButton
-          iconName="menu"
-          onClick={() => {}}
-          customClassName={styles.iconButton}
-        />
-        <Logo
-          customClassName={styles.logo}
-          withTitle
-          size="small"
-        />
-        <div className={styles.input}>
-          Input
-        </div>
-        <div className={styles.buttons}>
-          <IconButton
-            iconName="arrows-cw"
-            onClick={() => {}}
-            customClassName={styles.iconButton}
-          />
-          <IconButton
-            iconName="th"
-            onClick={() => {}}
-            customClassName={styles.iconButton}
-          />
-          <IconButton
-            iconName="cog"
-            onClick={() => {}}
-            customClassName={styles.iconButton}
-          />
-        </div>
-        <IconButton
-          iconName="user"
-          onClick={() => {}}
-          customClassName={styles.iconButton}
-        />
-      </div>
-    );
-  }
+	render(): React.ReactNode {
+		return (
+			<div className={styles.root}>
+				<IconButton iconName="menu" onClick={() => {}} customClassName={styles.iconButton} />
+				<Logo customClassName={styles.logo} withTitle size="small" />
+				<div className={styles.input}>Input</div>
+				<div className={styles.buttons}>
+					<IconButton iconName="arrows-cw" onClick={() => {}} customClassName={styles.iconButton} />
+					<IconButton iconName="th" onClick={() => {}} customClassName={styles.iconButton} />
+					<IconButton iconName="cog" onClick={() => {}} customClassName={styles.iconButton} />
+				</div>
+				<IconButton iconName="user" onClick={() => {}} customClassName={styles.iconButton} />
+			</div>
+		);
+	}
 }
 
 export default Navbar;
