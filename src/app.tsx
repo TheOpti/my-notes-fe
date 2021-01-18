@@ -1,15 +1,14 @@
 import React, { useContext } from 'react';
-import { AuthContext } from './context/auth';
-
-import type { UserType } from 'types/context';
+import { AuthContext } from 'context/auth';
+import type { AuthContextType } from 'types/context';
 
 import Application from './pages/Application';
 import Login from './pages/Login';
 
-function App(): React.ReactNode {
-	const user: UserType = () => useContext(AuthContext);
+function App(): JSX.Element {
+	const contextData: AuthContextType = useContext<AuthContextType>(AuthContext);
 
-	return user.data ? <Application /> : <Login />;
+	return contextData.data ? <Application /> : <Login />;
 }
 
 export default App;

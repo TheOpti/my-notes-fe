@@ -1,22 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
-import type { UserLoginResponseType } from 'types/api';
+import type { AuthContextType, UserType } from 'types/context';
+import type { UserResponseType } from 'types/api';
 
-const AuthContext = React.createContext({});
+const AuthContext = createContext<AuthContextType>({
+	login: null,
+	logout: null,
+	data: null,
+});
 
-export type ProviderType = {
+export type PropsType = {
 	children: React.ReactNode;
 };
 
-function AuthProvider(props: ProviderType): React.ReactNode {
-	const [userData, setUserData] = useState(null);
-	const [loading, setLoading] = useState(true);
+const AuthProvider = (props: PropsType): JSX.Element => {
+	const [userData, setUserData] = useState<UserType>(null);
+	const [loading, setLoading] = useState<boolean>(true);
 
 	useEffect(() => {
 		const checkAuthentication = async () => {
 			try {
-				const response: UserLoginResponseType = await axios('http://localhost:3000/me', { withCredentials: true });
+				const response: UserResponseType = await axios('http://localhost:3000/me', {
+					withCredentials: true,
+				});
 				const { user } = response.data;
 
 				setLoading(false);
@@ -36,7 +43,7 @@ function AuthProvider(props: ProviderType): React.ReactNode {
 
 	const login = async (login: string, password: string) => {
 		try {
-			const data: UserLoginResponseType = await axios.post(
+			const data: UserResponseType = await axios.post(
 				'http://localhost:3000/login',
 				{ login, password },
 				{ withCredentials: true }
@@ -57,6 +64,6 @@ function AuthProvider(props: ProviderType): React.ReactNode {
 	};
 
 	return <AuthContext.Provider value={{ data: userData, login, logout }}>{props.children}</AuthContext.Provider>;
-}
+};
 
 export { AuthContext, AuthProvider };

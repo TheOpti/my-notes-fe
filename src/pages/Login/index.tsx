@@ -42,27 +42,18 @@ class Login extends PureComponent {
 
 		const switcherBtnTitle = registerFormActive ? 'Login' : 'Register';
 
-		const containerClasses = cx(
-			{
-				[styles.registerFormPosition]: registerFormActive,
-				[styles.loginFormPosition]: !registerFormActive,
-			},
-			styles.container
-		);
+		const containerClasses = cx(styles.container, {
+			[styles.registerFormPosition]: registerFormActive,
+			[styles.loginFormPosition]: !registerFormActive,
+		});
 
-		const registerFormClasses = cx(
-			{
-				[styles.hidden]: !registerFormActive,
-			},
-			styles.twoThird
-		);
+		const registerFormClasses = cx(styles.twoThird, {
+			[styles.hidden]: !registerFormActive,
+		});
 
-		const loginFormClasses = cx(
-			{
-				[styles.hidden]: registerFormActive,
-			},
-			styles.twoThird
-		);
+		const loginFormClasses = cx(styles.twoThird, {
+			[styles.hidden]: registerFormActive,
+		});
 
 		return (
 			<div className={styles.login}>
