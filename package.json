@@ -66,8 +66,7 @@
     "react-dom": "^17.0.1"
   },
   "lint-staged": {
-    "**/*.{tsx}": [
-      "prettier:check",
+    "**/*.{js,ts,jsx,tsx}": [
       "eslint",
       "jest --no-cache --findRelatedTests"
     ],
