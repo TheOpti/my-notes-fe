@@ -20,6 +20,9 @@ const Button: React.FC<ButtonPropsType> = (props: ButtonPropsType) => {
 		[styles.disabled]: disabled || loading,
 	});
 
+	const a = true;
+	console.log('Test for commit: a ', a);
+
 	const labelStyles = {
 		...(loading ? { paddingLeft: '8px' } : null),
 	};
