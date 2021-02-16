@@ -62,7 +62,7 @@ class LoginForm extends Component<PropsType, StateType> {
 			<div className={styles.root}>
 				<Input label="Login" name="login" value={login} handleChange={this.updateField} />
 				<Input label="Password" name="password" value={password} handleChange={this.updateField} />
-				<Button onClickHandler={this.loginToApplication} label="Login" classname={styles.login} />
+				<Button onClickHandler={this.loginToApplication} label="Login" classname={styles.loginBtn} />
 				{errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
 			</div>
 		);

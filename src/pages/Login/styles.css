@@ -11,19 +11,19 @@
 	width: 800px;
 	border-radius: 8px;
 	border: 1px solid #dadce0;
-	padding: 32px 40px;
+	padding: 24px 40px;
 	overflow: hidden;
 }
 
 .logo {
-	margin: 12px auto;
+	margin-bottom: 12px;
 	display: flex;
 	justify-content: center;
 }
 
 .title {
-	font-size: 40px;
-	margin-bottom: 40px;
+	font-size: 32px;
+	margin-bottom: 24px;
 	text-align: center;
 }
 
@@ -43,9 +43,9 @@
 	transform: translateX(-66%);
 }
 
-.switcherBtn {
+.button {
 	width: 100%;
-	margin-top: 12px;
+	margin-top: 16px;
 }
 
 .oneThird {
@@ -57,7 +57,7 @@
 .twoThird {
 	transition: width 0.3s;
 	display: inline-block;
-	min-width: calc(66% - 20px);
+	min-width: calc(66% - 32px);
 }
 
 .twoThird:first-of-type {

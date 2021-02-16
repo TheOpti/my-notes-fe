@@ -48,7 +48,7 @@ const Login = () => {
 	return (
 		<div className={styles.login}>
 			<div className={styles.root}>
-				<Logo customClassName={styles.logo} size="large" />
+				<Logo customClassName={styles.logo} size="xlarge" />
 				<div className={styles.title}>Is it you first visit?</div>
 				<div className={containerClasses}>
 					<div className={registerFormClasses}>
@@ -60,7 +60,7 @@ const Login = () => {
 						<div className={styles.sectionTitle}>{switcherSectionTitle}</div>
 						<Button
 							onClickHandler={toggleActiveSection}
-							classname={styles.switcherBtn}
+							classname={styles.button}
 							label={switcherBtnTitle}
 							color="outlined"
 						/>
