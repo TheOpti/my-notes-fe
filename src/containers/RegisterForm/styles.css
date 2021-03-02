@@ -7,3 +7,9 @@
 	margin-top: 16px;
 	width: 100%;
 }
+
+.errorMessage {
+	margin-top: 12px;
+	font-size: 14px;
+	color: var(--main-red-color);
+}

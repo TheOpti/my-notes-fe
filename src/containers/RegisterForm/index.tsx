@@ -1,45 +1,133 @@
 import React, { Component } from 'react';
 import Button from 'components/Button';
 import Input from 'components/Input';
+
+import { isValidEmail, isValidPassword } from '../../helpers/forms';
+
 import styles from './styles.css';
 
 type PropsType = Record<string, never>;
 
 type StateType = {
-	[fieldName: string]: string;
+	registerFormFields: {
+		[fieldName: string]: string;
+	};
+	registerFormErrors: {
+		[fieldName: string]: string;
+	};
+	formSubmitted: boolean;
+	loading: boolean;
 };
 
 class RegisterForm extends Component<PropsType, StateType> {
 	state = {
-		login: '',
-		password: '',
-		passwordRepeated: '',
+		registerFormFields: {
+			login: '',
+			email: '',
+			password: '',
+			passwordRepeated: '',
+		},
+		registerFormErrors: {
+			general: '',
+			login: '',
+			email: '',
+			password: '',
+			passwordRepeated: '',
+		},
+		formSubmitted: false,
+		loading: false,
 	};
 
 	updateField = (fieldName: string, value: string): void => {
-		this.setState({
-			[fieldName]: value,
-		});
+		this.setState((prevState) => ({
+			...prevState,
+			registerFormFields: {
+				...prevState.registerFormFields,
+				[fieldName]: value,
+			},
+		}));
 	};
 
 	register = (): void => {
-		console.log('Register function');
+		console.log('register function');
+
+		const {
+			registerFormFields: { login, email, password, passwordRepeated },
+		} = this.state;
+
+		const emailCorrect = email && isValidEmail(email);
+		const isPasswordCorrect = password && isValidPassword(password);
+		const isRepeatedPasswordCorrect = passwordRepeated && isValidPassword(passwordRepeated);
+
+		if (!login || !emailCorrect || !isPasswordCorrect || !isRepeatedPasswordCorrect || password !== passwordRepeated) {
+			const registerFormErrors = {
+				general: 'Please setup all fields correctly.',
+				login: !login ? 'Please enter correct login for your account.' : '',
+				email: !emailCorrect ? 'Please enter correct email.' : '',
+				password: !isPasswordCorrect
+					? 'Password does not meet criteria: minimum 8 characters, at least one capital letter and number.'
+					: '',
+				passwordRepeated: !isRepeatedPasswordCorrect
+					? 'Repeated password does not meet criteria: minimum 8 characters, at least one capital letter and number.'
+					: password !== passwordRepeated
+					? 'Make sure repeated password is the same as password'
+					: '',
+			};
+
+			this.setState({
+				...this.state,
+				registerFormErrors,
+				formSubmitted: true,
+			});
+
+			return;
+		}
 	};
 
 	render(): React.ReactNode {
-		const { login, password, passwordRepeated } = this.state;
+		const { registerFormFields, registerFormErrors, formSubmitted } = this.state;
+		const { login, email, password, passwordRepeated } = registerFormFields;
 
 		return (
 			<div className={styles.root}>
-				<Input label="Login" name="login" value={login} handleChange={this.updateField} />
-				<Input label="Password" name="password" value={password} handleChange={this.updateField} />
+				<Input
+					label="Login"
+					name="login"
+					value={login}
+					error={registerFormErrors.login}
+					handleChange={this.updateField}
+					formSubmitted={formSubmitted}
+					subtitle="Provide your unique username."
+				/>
+				<Input
+					label="Email"
+					name="email"
+					value={email}
+					error={registerFormErrors.email}
+					handleChange={this.updateField}
+					formSubmitted={formSubmitted}
+					subtitle="Fill with your correct email."
+				/>
+				<Input
+					label="Password"
+					name="password"
+					value={password}
+					error={registerFormErrors.password}
+					handleChange={this.updateField}
+					formSubmitted={formSubmitted}
+					subtitle="Use minimum 8 characters and include at least one number and capital letter."
+				/>
 				<Input
 					label="Repeat password"
 					name="passwordRepeated"
 					value={passwordRepeated}
+					error={registerFormErrors.passwordRepeated}
 					handleChange={this.updateField}
+					formSubmitted={formSubmitted}
+					subtitle="Make sure passwords match each other."
 				/>
 				<Button onClickHandler={this.register} label="Create new account" classname={styles.registerBtn} />
+				{registerFormErrors.general && <div className={styles.errorMessage}>{registerFormErrors.general}</div>}
 			</div>
 		);
 	}

@@ -8,9 +8,10 @@ type InputPropsType = {
 	value?: string;
 	error?: string;
 	formSubmitted?: boolean;
+	subtitle?: string;
 };
 const Input: React.FC<InputPropsType> = (props: InputPropsType) => {
-	const { label, name, handleChange, value, error, formSubmitted } = props;
+	const { label, name, handleChange, value, error, formSubmitted, subtitle, ...restProps } = props;
 
 	const [visited, setVisited] = useState(false);
 
@@ -27,9 +28,17 @@ const Input: React.FC<InputPropsType> = (props: InputPropsType) => {
 
 	return (
 		<div className={styles.root}>
-			<input className={styles.input} onChange={updateFormValue} onBlur={onBlurHandler} value={value} required />
+			<input
+				className={styles.input}
+				onChange={updateFormValue}
+				onBlur={onBlurHandler}
+				value={value}
+				required
+				{...restProps}
+			/>
 			<div className={styles.highlight} />
 			<label className={styles.label}>{label}</label>
+			{subtitle && !error && <div className={styles.subtitle}>{subtitle}</div>}
 			{canShowError && error && <div className={styles.errorMsg}>{error}</div>}
 		</div>
 	);

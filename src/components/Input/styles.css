@@ -59,9 +59,18 @@
 	transition: 0.3s ease all;
 }
 
+.subtitle {
+	height: 14px;
+	font-size: 12px;
+	margin-top: 6px;
+	white-space: normal;
+	color: var(--main-dark-gray-color);
+}
+
 .errorMsg {
 	height: 14px;
-	font-size: 14px;
+	font-size: 12px;
 	margin-top: 6px;
 	color: var(--main-red-color);
+	white-space: normal;
 }
