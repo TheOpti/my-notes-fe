@@ -1,6 +1,6 @@
 .root {
 	position: relative;
-	margin: 4px 0;
+	margin: 16px 0;
 	max-width: var(--max-form-elem-width);
 	width: 100%;
 	color: var(--main-dark-gray-color);
@@ -9,7 +9,7 @@
 .input {
 	background: none;
 	font-size: 18px;
-	padding: 10px 10px 10px 5px;
+	padding: 8px 8px 8px 6px;
 	display: block;
 	border: none;
 	border-radius: 0;
@@ -23,7 +23,7 @@
 
 .input:focus ~ .label,
 .input:valid ~ .label {
-	top: -8px;
+	top: -11px;
 	left: -1px;
 	font-size: 12px;
 	color: var(--main-blue-color);
@@ -60,8 +60,8 @@
 }
 
 .errorMsg {
-	height: 16px;
+	height: 14px;
 	font-size: 14px;
-	margin-top: 8px;
+	margin-top: 6px;
 	color: var(--main-red-color);
 }

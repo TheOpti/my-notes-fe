@@ -22,7 +22,10 @@ class LoginForm extends Component<PropsType, StateType> {
 			login: '',
 			password: '',
 		},
+		loginError: '',
+		passwordError: '',
 		errorMessage: '',
+		formSubmitted: false,
 		loading: false,
 	};
 
@@ -31,6 +34,20 @@ class LoginForm extends Component<PropsType, StateType> {
 		const {
 			loginFormFields: { login, password },
 		} = this.state;
+
+		if (!login || !password) {
+			this.setState({
+				...this.state,
+				...{
+					errorMessage: !login || !password ? 'Please provide your login and password.' : '',
+					loginError: !login ? 'Please provide login to your account.' : '',
+					passwordError: !password ? 'Please provide your password.' : '',
+					formSubmitted: true,
+				},
+			});
+
+			return;
+		}
 
 		this.setState({ loading: true }, async () => {
 			try {
@@ -55,13 +72,30 @@ class LoginForm extends Component<PropsType, StateType> {
 	render(): React.ReactNode {
 		const {
 			loginFormFields: { login, password },
+			loginError,
+			passwordError,
 			errorMessage,
+			formSubmitted,
 		} = this.state;
 
 		return (
 			<div className={styles.root}>
-				<Input label="Login" name="login" value={login} handleChange={this.updateField} />
-				<Input label="Password" name="password" value={password} handleChange={this.updateField} />
+				<Input
+					label="Login"
+					name="login"
+					value={login}
+					error={loginError}
+					handleChange={this.updateField}
+					formSubmitted={formSubmitted}
+				/>
+				<Input
+					label="Password"
+					name="password"
+					value={password}
+					error={passwordError}
+					handleChange={this.updateField}
+					formSubmitted={formSubmitted}
+				/>
 				<Button onClickHandler={this.loginToApplication} label="Login" classname={styles.loginBtn} />
 				{errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
 			</div>

@@ -19,8 +19,5 @@ exports[`Input should render input with no props without crashing 1`] = `
   >
     Field
   </label>
-  <div
-    className="errorMsg"
-  />
 </div>
 `;

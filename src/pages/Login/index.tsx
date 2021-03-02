@@ -17,7 +17,7 @@ const FORM_TYPES = {
 	REGISTER: 'register',
 };
 
-const Login = () => {
+const Login = (): JSX.Element => {
 	const [formType, setFormType] = useState<string>(FORM_TYPES.LOGIN);
 
 	const toggleActiveSection = (): void => {
@@ -49,7 +49,7 @@ const Login = () => {
 		<div className={styles.login}>
 			<div className={styles.root}>
 				<Logo customClassName={styles.logo} size="xlarge" />
-				<div className={styles.title}>Is it you first visit?</div>
+				<div className={styles.title}>Hello! Is it you first visit?</div>
 				<div className={containerClasses}>
 					<div className={registerFormClasses}>
 						<div className={styles.sectionTitle}>Yeah, sign me in:</div>

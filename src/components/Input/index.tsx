@@ -30,7 +30,7 @@ const Input: React.FC<InputPropsType> = (props: InputPropsType) => {
 			<input className={styles.input} onChange={updateFormValue} onBlur={onBlurHandler} value={value} required />
 			<div className={styles.highlight} />
 			<label className={styles.label}>{label}</label>
-			<div className={styles.errorMsg}>{canShowError && error}</div>
+			{canShowError && error && <div className={styles.errorMsg}>{error}</div>}
 		</div>
 	);
 };

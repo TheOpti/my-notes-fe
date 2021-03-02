@@ -48,19 +48,28 @@ const AuthProvider = (props: PropsType): JSX.Element => {
 				{ login, password },
 				{ withCredentials: true }
 			);
+
 			setUserData(data);
 		} catch (error) {
-			const {
-				data: { message },
-			} = error.response;
-			return message;
+			if (error && error.response) {
+				const {
+					data: { message },
+				} = error.response;
+
+				return message;
+			}
+
+			return 'There was an error with connecting to server.';
 		}
 	};
 
 	const logout = async () => {
-		const response = await axios.post('http://localhost:3000/logout', {}, { withCredentials: true });
-		console.log('Response from logout', response);
-		setUserData(null);
+		try {
+			await axios.post('http://localhost:3000/logout', {}, { withCredentials: true });
+			setUserData(null);
+		} catch (_e) {
+			return 'There was an error with connecting to server.';
+		}
 	};
 
 	return <AuthContext.Provider value={{ data: userData, login, logout }}>{props.children}</AuthContext.Provider>;
