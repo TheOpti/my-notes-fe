@@ -48,7 +48,7 @@ const Login = (): JSX.Element => {
 	return (
 		<div className={styles.login}>
 			<div className={styles.root}>
-				<Logo customClassName={styles.logo} size="xlarge" />
+				<Logo customClassName={styles.logo} size={196} />
 				<div className={styles.title}>Hello! Is it you first visit?</div>
 				<div className={containerClasses}>
 					<div className={registerFormClasses}>

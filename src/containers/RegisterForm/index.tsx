@@ -49,8 +49,6 @@ class RegisterForm extends Component<PropsType, StateType> {
 	};
 
 	register = (): void => {
-		console.log('register function');
-
 		const {
 			registerFormFields: { login, email, password, passwordRepeated },
 		} = this.state;
@@ -98,6 +96,7 @@ class RegisterForm extends Component<PropsType, StateType> {
 					handleChange={this.updateField}
 					formSubmitted={formSubmitted}
 					subtitle="Provide your unique username."
+					type="text"
 				/>
 				<Input
 					label="Email"
@@ -107,6 +106,7 @@ class RegisterForm extends Component<PropsType, StateType> {
 					handleChange={this.updateField}
 					formSubmitted={formSubmitted}
 					subtitle="Fill with your correct email."
+					type="text"
 				/>
 				<Input
 					label="Password"
@@ -116,6 +116,7 @@ class RegisterForm extends Component<PropsType, StateType> {
 					handleChange={this.updateField}
 					formSubmitted={formSubmitted}
 					subtitle="Use minimum 8 characters and include at least one number and capital letter."
+					type="password"
 				/>
 				<Input
 					label="Repeat password"
@@ -125,6 +126,7 @@ class RegisterForm extends Component<PropsType, StateType> {
 					handleChange={this.updateField}
 					formSubmitted={formSubmitted}
 					subtitle="Make sure passwords match each other."
+					type="password"
 				/>
 				<Button onClickHandler={this.register} label="Create new account" classname={styles.registerBtn} />
 				{registerFormErrors.general && <div className={styles.errorMessage}>{registerFormErrors.general}</div>}
