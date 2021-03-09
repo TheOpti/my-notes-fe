@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import styles from './styles.css';
 
-type InputPropsType = {
+type PropsType = {
 	label: string;
 	name: string;
 	handleChange?: (event: string, value: string) => void;
 	value?: string;
 	error?: string;
 	formSubmitted?: boolean;
+	subtitle?: string;
+	type?: string;
 };
-const Input: React.FC<InputPropsType> = (props: InputPropsType) => {
-	const { label, name, handleChange, value, error, formSubmitted } = props;
+const Input: React.FC<PropsType> = (props: PropsType) => {
+	const { label, name, handleChange, value, error, formSubmitted, subtitle, type = 'text', ...restProps } = props;
 
 	const [visited, setVisited] = useState(false);
 
@@ -27,10 +29,19 @@ const Input: React.FC<InputPropsType> = (props: InputPropsType) => {
 
 	return (
 		<div className={styles.root}>
-			<input className={styles.input} onChange={updateFormValue} onBlur={onBlurHandler} value={value} required />
+			<input
+				className={styles.input}
+				onChange={updateFormValue}
+				onBlur={onBlurHandler}
+				value={value}
+				required
+				type={type}
+				{...restProps}
+			/>
 			<div className={styles.highlight} />
 			<label className={styles.label}>{label}</label>
-			<div className={styles.errorMsg}>{canShowError && error}</div>
+			{subtitle && !error && <div className={styles.subtitle}>{subtitle}</div>}
+			{canShowError && error && <div className={styles.errorMsg}>{error}</div>}
 		</div>
 	);
 };

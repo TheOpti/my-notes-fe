@@ -71,9 +71,6 @@
       "eslint",
       "jest --no-cache --findRelatedTests"
     ],
-    "**/*.{scss,css}": [
-      "stylelint --fix"
-    ],
     "*.js": "eslint --cache --fix",
     "*.{js,css,md}": "prettier --write"
   }

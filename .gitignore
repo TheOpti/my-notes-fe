@@ -43,3 +43,6 @@ Thumbs.db
 
 # Config files
 .env
+
+# eslint cache file
+.eslintcache

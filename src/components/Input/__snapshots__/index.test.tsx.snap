@@ -9,6 +9,7 @@ exports[`Input should render input with no props without crashing 1`] = `
     onBlur={[Function]}
     onChange={[Function]}
     required={true}
+    type="text"
     value=""
   />
   <div
@@ -19,8 +20,5 @@ exports[`Input should render input with no props without crashing 1`] = `
   >
     Field
   </label>
-  <div
-    className="errorMsg"
-  />
 </div>
 `;

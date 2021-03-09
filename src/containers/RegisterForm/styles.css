@@ -1,8 +1,15 @@
 .root {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .registerBtn {
-  width: 100%;
+	margin-top: 16px;
+	width: 100%;
+}
+
+.errorMessage {
+	margin-top: 12px;
+	font-size: 14px;
+	color: var(--main-red-color);
 }

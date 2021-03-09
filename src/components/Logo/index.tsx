@@ -3,20 +3,20 @@ import cx from 'classnames';
 import logo from 'images/image.svg';
 import styles from './styles.css';
 
-type LogoPropsType = {
+type PropsType = {
 	withTitle?: boolean;
-	size?: string;
+	size?: string | number;
 	customClassName?: string;
 };
-const Logo: React.FC<LogoPropsType> = (props: LogoPropsType) => {
+const Logo: React.FC<PropsType> = (props: PropsType) => {
 	const { withTitle, size, customClassName } = props;
-
 	const logoClasses = cx(styles.root, customClassName);
-	const imageClasses = cx(styles.image, styles[size]);
+
+	const imageProperties = typeof size === 'string' ? { className: styles[size] } : { width: size, height: size };
 
 	return (
 		<div className={logoClasses}>
-			<img className={imageClasses} alt="logo" src={logo} />
+			<img {...imageProperties} alt="logo" src={logo} />
 			{withTitle && <div className={styles.logoText}>MyNotes</div>}
 		</div>
 	);

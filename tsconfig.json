@@ -20,6 +20,7 @@
       "containers/*": [ "src/containers/*" ],
       "context/*": [ "src/context/*" ],
       "pages/*": [ "src/pages/*" ],
+      "types/*": [ "src/types/*" ],
     }
   }
 }
