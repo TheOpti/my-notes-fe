@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+const bodyParser = require('body-parser');
 const { router } = require('./routes');
 
 const app = express();
@@ -7,6 +8,8 @@ const port = 3000;
 
 // middleware
 app.use(morgan('combined'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(function (req, res, next) {
 	setTimeout(next, 1500);
 });
