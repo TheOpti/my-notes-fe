@@ -87,6 +87,7 @@ class LoginForm extends Component<PropsType, StateType> {
 					error={loginError}
 					handleChange={this.updateField}
 					formSubmitted={formSubmitted}
+					type="text"
 				/>
 				<Input
 					label="Password"
@@ -95,6 +96,7 @@ class LoginForm extends Component<PropsType, StateType> {
 					error={passwordError}
 					handleChange={this.updateField}
 					formSubmitted={formSubmitted}
+					type="password"
 				/>
 				<Button onClickHandler={this.loginToApplication} label="Login" classname={styles.loginBtn} />
 				{errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}

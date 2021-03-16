@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import cx from 'classnames';
 
 import { AuthContext } from 'context/auth';
@@ -7,6 +7,7 @@ import type { AuthContextType } from 'types/context';
 
 import Logo from 'components/Logo';
 import Button from 'components/Button';
+import LoadingSpinner from 'components/LoadingSpinner';
 import LoginForm from 'containers/LoginForm';
 import RegisterForm from 'containers/RegisterForm';
 
@@ -19,6 +20,7 @@ const FORM_TYPES = {
 
 const Login = (): JSX.Element => {
 	const [formType, setFormType] = useState<string>(FORM_TYPES.LOGIN);
+	const { login, loginLoading }: AuthContextType = useContext<AuthContextType>(AuthContext);
 
 	const toggleActiveSection = (): void => {
 		const newFormType = formType === FORM_TYPES.REGISTER ? FORM_TYPES.LOGIN : FORM_TYPES.REGISTER;
@@ -47,31 +49,28 @@ const Login = (): JSX.Element => {
 
 	return (
 		<div className={styles.login}>
-			<div className={styles.root}>
-				<Logo customClassName={styles.logo} size={196} />
-				<div className={styles.title}>Hello! Is it you first visit?</div>
-				<div className={containerClasses}>
-					<div className={registerFormClasses}>
-						<div className={styles.sectionTitle}>Yeah, sign me in:</div>
-						<RegisterForm />
-					</div>
+			{loginLoading && <LoadingSpinner withMask size="large" />}
+			<Logo customClassName={styles.logo} size={196} />
+			<div className={styles.title}>Hello! Is it you first visit?</div>
+			<div className={containerClasses}>
+				<div className={registerFormClasses}>
+					<div className={styles.sectionTitle}>Yeah, sign me in:</div>
+					<RegisterForm />
+				</div>
 
-					<div className={styles.oneThird}>
-						<div className={styles.sectionTitle}>{switcherSectionTitle}</div>
-						<Button
-							onClickHandler={toggleActiveSection}
-							classname={styles.button}
-							label={switcherBtnTitle}
-							color="outlined"
-						/>
-					</div>
+				<div className={styles.oneThird}>
+					<div className={styles.sectionTitle}>{switcherSectionTitle}</div>
+					<Button
+						onClickHandler={toggleActiveSection}
+						classname={styles.button}
+						label={switcherBtnTitle}
+						color="outlined"
+					/>
+				</div>
 
-					<div className={loginFormClasses}>
-						<div className={styles.sectionTitle}>No, I am already registered:</div>
-						<AuthContext.Consumer>
-							{({ login }: AuthContextType) => <LoginForm handleLogin={login} />}
-						</AuthContext.Consumer>
-					</div>
+				<div className={loginFormClasses}>
+					<div className={styles.sectionTitle}>No, I am already registered:</div>
+					<LoginForm handleLogin={login} />
 				</div>
 			</div>
 		</div>
