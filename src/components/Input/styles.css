@@ -22,7 +22,8 @@
 }
 
 .input:focus ~ .label,
-.input:valid ~ .label {
+.input:valid ~ .label,
+.input:disabled ~ .label {
 	top: -11px;
 	left: -1px;
 	font-size: 12px;

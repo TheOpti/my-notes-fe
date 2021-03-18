@@ -6,7 +6,9 @@ import { isValidEmail, isValidPassword } from '../../helpers/forms';
 
 import styles from './styles.css';
 
-type PropsType = Record<string, never>;
+type PropsType = {
+	loading: boolean;
+};
 
 type StateType = {
 	registerFormFields: {
@@ -16,7 +18,6 @@ type StateType = {
 		[fieldName: string]: string;
 	};
 	formSubmitted: boolean;
-	loading: boolean;
 };
 
 class RegisterForm extends Component<PropsType, StateType> {
@@ -35,7 +36,6 @@ class RegisterForm extends Component<PropsType, StateType> {
 			passwordRepeated: '',
 		},
 		formSubmitted: false,
-		loading: false,
 	};
 
 	updateField = (fieldName: string, value: string): void => {
@@ -80,9 +80,12 @@ class RegisterForm extends Component<PropsType, StateType> {
 
 			return;
 		}
+
+		alert('Register correct');
 	};
 
 	render(): React.ReactNode {
+		const { loading } = this.props;
 		const { registerFormFields, registerFormErrors, formSubmitted } = this.state;
 		const { login, email, password, passwordRepeated } = registerFormFields;
 
@@ -92,6 +95,7 @@ class RegisterForm extends Component<PropsType, StateType> {
 					label="Login"
 					name="login"
 					value={login}
+					disabled={loading}
 					error={registerFormErrors.login}
 					handleChange={this.updateField}
 					formSubmitted={formSubmitted}
@@ -102,6 +106,7 @@ class RegisterForm extends Component<PropsType, StateType> {
 					label="Email"
 					name="email"
 					value={email}
+					disabled={loading}
 					error={registerFormErrors.email}
 					handleChange={this.updateField}
 					formSubmitted={formSubmitted}
@@ -112,6 +117,7 @@ class RegisterForm extends Component<PropsType, StateType> {
 					label="Password"
 					name="password"
 					value={password}
+					disabled={loading}
 					error={registerFormErrors.password}
 					handleChange={this.updateField}
 					formSubmitted={formSubmitted}
@@ -122,13 +128,19 @@ class RegisterForm extends Component<PropsType, StateType> {
 					label="Repeat password"
 					name="passwordRepeated"
 					value={passwordRepeated}
+					disabled={loading}
 					error={registerFormErrors.passwordRepeated}
 					handleChange={this.updateField}
 					formSubmitted={formSubmitted}
 					subtitle="Make sure passwords match each other."
 					type="password"
 				/>
-				<Button onClickHandler={this.register} label="Create new account" classname={styles.registerBtn} />
+				<Button
+					onClickHandler={this.register}
+					label="Create new account"
+					classname={styles.registerBtn}
+					loading={loading}
+				/>
 				{registerFormErrors.general && <div className={styles.errorMessage}>{registerFormErrors.general}</div>}
 			</div>
 		);

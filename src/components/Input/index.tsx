@@ -4,6 +4,7 @@ import styles from './styles.css';
 type PropsType = {
 	label: string;
 	name: string;
+	disabled?: boolean;
 	handleChange?: (event: string, value: string) => void;
 	value?: string;
 	error?: string;
@@ -12,7 +13,18 @@ type PropsType = {
 	type?: string;
 };
 const Input: React.FC<PropsType> = (props: PropsType) => {
-	const { label, name, handleChange, value, error, formSubmitted, subtitle, type = 'text', ...restProps } = props;
+	const {
+		label,
+		name,
+		disabled,
+		handleChange,
+		value,
+		error,
+		formSubmitted,
+		subtitle,
+		type = 'text',
+		...restProps
+	} = props;
 
 	const [visited, setVisited] = useState(false);
 
@@ -36,6 +48,7 @@ const Input: React.FC<PropsType> = (props: PropsType) => {
 				value={value}
 				required
 				type={type}
+				disabled={disabled}
 				{...restProps}
 			/>
 			<div className={styles.highlight} />

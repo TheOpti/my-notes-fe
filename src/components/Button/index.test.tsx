@@ -14,7 +14,7 @@ describe('Button', () => {
 	it('should call onClickHandler function when button is actually clicked', () => {
 		const mockFunction = jest.fn();
 
-		const wrapper = mount(<Button label="Label" onClickHandler={mockFunction} disabled />);
+		const wrapper = mount(<Button label="Label" onClickHandler={mockFunction} />);
 
 		wrapper.find('button').simulate('click');
 		expect(mockFunction).toHaveBeenCalled();
@@ -25,5 +25,13 @@ describe('Button', () => {
 
 		const containsDisabled = wrapper.find('button').html().includes('disabled');
 		expect(containsDisabled).toBe(true);
+	});
+
+	it('should not perform click handler when button is disabled', () => {
+		const mockFunction = jest.fn();
+		const wrapper = mount(<Button label="Label" onClickHandler={mockFunction} disabled />);
+
+		wrapper.find('button').simulate('click');
+		expect(mockFunction).not.toHaveBeenCalled();
 	});
 });

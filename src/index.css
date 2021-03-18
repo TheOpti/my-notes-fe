@@ -2,6 +2,7 @@
 	--main-blue-color: #2196f3;
 	--secondary-blue-color: #67daff;
 	--main-dark-gray-color: #726464;
+	--main-gray-text-color: #202124;
 	--main-red-color: #e53935;
 	--main-green-color: #1b9a59;
 }
@@ -29,4 +30,14 @@ body > div {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
+}
+
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+	color: var(--main-gray-text-color);
 }

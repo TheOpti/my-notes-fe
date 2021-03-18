@@ -16,8 +16,10 @@ type ButtonPropsType = {
 const Button: React.FC<ButtonPropsType> = (props: ButtonPropsType) => {
 	const { label, onClickHandler, color, classname, disabled, loading } = props;
 
+	const disabledState = disabled || loading;
+
 	const btnClasses = cx(styles.root, styles[color], classname, {
-		[styles.disabled]: disabled || loading,
+		[styles.disabled]: disabledState,
 	});
 
 	const labelStyles = {
@@ -25,7 +27,7 @@ const Button: React.FC<ButtonPropsType> = (props: ButtonPropsType) => {
 	};
 
 	return (
-		<button onClick={onClickHandler} className={btnClasses} type="button">
+		<button onClick={onClickHandler} className={btnClasses} type="button" disabled={disabledState}>
 			<span className={styles.content}>
 				{loading && <LoadingSpinner size="small" monocolor />}
 				<span style={labelStyles}>{label}</span>

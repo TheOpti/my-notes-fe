@@ -7,7 +7,6 @@ import type { AuthContextType } from 'types/context';
 
 import Logo from 'components/Logo';
 import Button from 'components/Button';
-import LoadingSpinner from 'components/LoadingSpinner';
 import LoginForm from 'containers/LoginForm';
 import RegisterForm from 'containers/RegisterForm';
 
@@ -49,18 +48,18 @@ const Login = (): JSX.Element => {
 
 	return (
 		<div className={styles.login}>
-			{loginLoading && <LoadingSpinner withMask size="large" />}
 			<Logo customClassName={styles.logo} size={196} />
 			<div className={styles.title}>Hello! Is it you first visit?</div>
 			<div className={containerClasses}>
 				<div className={registerFormClasses}>
 					<div className={styles.sectionTitle}>Yeah, sign me in:</div>
-					<RegisterForm />
+					<RegisterForm loading={false} />
 				</div>
 
 				<div className={styles.oneThird}>
 					<div className={styles.sectionTitle}>{switcherSectionTitle}</div>
 					<Button
+						disabled={loginLoading}
 						onClickHandler={toggleActiveSection}
 						classname={styles.button}
 						label={switcherBtnTitle}
@@ -70,7 +69,7 @@ const Login = (): JSX.Element => {
 
 				<div className={loginFormClasses}>
 					<div className={styles.sectionTitle}>No, I am already registered:</div>
-					<LoginForm handleLogin={login} />
+					<LoginForm loading={loginLoading} handleLogin={login} />
 				</div>
 			</div>
 		</div>

@@ -2,22 +2,27 @@ import { isValidEmail, isValidPassword } from './forms';
 
 describe('forms', () => {
 	describe('isValidEmail', () => {
-		it('email should be correct - positive case #1', () => {
+		it('"foo@google.com" email should be correct - positive case #1', () => {
 			const email = 'foo@google.com';
 			expect(isValidEmail(email)).toEqual(true);
 		});
 
-		it('email should be correct - positive case #2', () => {
+		it('"my.super.email@wp.pl" email should be correct - positive case #2', () => {
 			const email = 'my.super.email@wp.pl';
 			expect(isValidEmail(email)).toEqual(true);
 		});
 
-		it('email should be incorrect - negative case #1', () => {
+		it('"wewqeqw@wp.pl" email should be correct - positive case #3', () => {
+			const email = 'wewqeqw@wp.pl';
+			expect(isValidEmail(email)).toEqual(true);
+		});
+
+		it('"ThisIsNotCorrectEmail" email should be incorrect - negative case #1', () => {
 			const email = 'ThisIsNotCorrectEmail';
 			expect(isValidEmail(email)).toEqual(false);
 		});
 
-		it('email should be incorrect - negative case #2', () => {
+		it('"foo_f.o.o.com" email should be incorrect - negative case #2', () => {
 			const email = 'foo_f.o.o.com';
 			expect(isValidEmail(email)).toEqual(false);
 		});
