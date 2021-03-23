@@ -4,10 +4,17 @@ import Logo from 'components/Logo';
 
 import styles from './styles.css';
 
-const Navbar = (): JSX.Element => {
+type PropsType = {
+	setSideMenuExpanded: (Function) => void;
+};
+const Navbar = ({ setSideMenuExpanded }: PropsType): JSX.Element => {
 	return (
 		<div className={styles.navbar}>
-			<IconButton iconName="menu" onClick={() => {}} className={styles.iconButton} />
+			<IconButton
+				iconName="menu"
+				onClick={() => setSideMenuExpanded((o: boolean) => !o)}
+				className={styles.iconButton}
+			/>
 			<Logo customClassName={styles.logo} withTitle size="small" />
 			<div className={styles.input}>Input</div>
 			<div className={styles.buttons}>

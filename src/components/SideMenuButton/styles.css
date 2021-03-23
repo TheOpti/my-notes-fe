@@ -8,8 +8,16 @@
 	min-width: 48px;
 	overflow: hidden;
 	width: 100%;
-	padding-left: 12px;
 	cursor: pointer;
+}
+
+.expanded {
+	padding-left: 12px;
+}
+
+.collapsed {
+	margin-left: 12px;
+	border-radius: 25px;
 }
 
 .sideMenuButton:hover {

@@ -9,13 +9,16 @@ type PropsType = {
 	title: string;
 	icon: string;
 	active?: boolean;
+	expanded: boolean;
 	onClick: () => void;
 };
 const SideMenuButton: React.FC<PropsType> = (props: PropsType) => {
-	const { title, icon, active, onClick } = props;
+	const { title, icon, active, expanded, onClick } = props;
 
 	const sideMenuBtnClasses = cx(styles.sideMenuButton, {
 		[styles.active]: active,
+		[styles.expanded]: expanded,
+		[styles.collapsed]: !expanded,
 	});
 
 	return (
