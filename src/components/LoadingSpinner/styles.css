@@ -1,44 +1,70 @@
 .spinner {
-  animation: rotator 1.4s linear infinite;
+	animation: rotator 1.4s linear infinite;
+}
+
+.loaderMask {
+	position: fixed;
+	pointer-events: none;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 @keyframes rotator {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(270deg); }
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(270deg);
+	}
 }
 
 .path {
-  stroke-dasharray: 200;
-  transform-origin: center;
+	stroke-dasharray: 200;
+	transform-origin: center;
 }
 
 .colors {
-  animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite
+	animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
 }
 
 .monocolor {
-  animation: dash 1.4s ease-in-out infinite;
-  stroke: var(--main-dark-gray-color);
+	animation: dash 1.4s ease-in-out infinite;
+	stroke: var(--main-dark-gray-color);
 }
 
 @keyframes colors {
-	0% { stroke: var(--main-blue-color); }
-	25% { stroke: var(--secondary-blue-color); }
-	50% { stroke: var(--main-dark-gray-color); }
-	75% { stroke: var(--main-red-color); }
-  100% { stroke: var(--main-green-color); }
+	0% {
+		stroke: var(--main-blue-color);
+	}
+	25% {
+		stroke: var(--secondary-blue-color);
+	}
+	50% {
+		stroke: var(--main-dark-gray-color);
+	}
+	75% {
+		stroke: var(--main-red-color);
+	}
+	100% {
+		stroke: var(--main-green-color);
+	}
 }
 
 @keyframes dash {
-  0% { 
-    stroke-dashoffset: 200; 
-  }
-  50% {
-    stroke-dashoffset: 50;
-    transform: rotate(135deg);
-  }
-  100% {
-    stroke-dashoffset: 200;
-    transform: rotate(450deg);
-  }
+	0% {
+		stroke-dashoffset: 200;
+	}
+	50% {
+		stroke-dashoffset: 50;
+		transform: rotate(135deg);
+	}
+	100% {
+		stroke-dashoffset: 200;
+		transform: rotate(450deg);
+	}
 }

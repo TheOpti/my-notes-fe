@@ -8,7 +8,7 @@
 
 .input {
 	background: none;
-	font-size: 18px;
+	font-size: 16px;
 	padding: 8px 8px 8px 6px;
 	display: block;
 	border: none;
@@ -22,7 +22,8 @@
 }
 
 .input:focus ~ .label,
-.input:valid ~ .label {
+.input:valid ~ .label,
+.input:disabled ~ .label {
 	top: -11px;
 	left: -1px;
 	font-size: 12px;

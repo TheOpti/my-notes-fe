@@ -8,6 +8,9 @@ const AuthContext = createContext<AuthContextType>({
 	login: null,
 	logout: null,
 	data: null,
+	loading: false,
+	loginLoading: false,
+	logoutLoading: false,
 });
 
 export type PropsType = {
@@ -17,6 +20,8 @@ export type PropsType = {
 const AuthProvider = (props: PropsType): JSX.Element => {
 	const [userData, setUserData] = useState<UserType>(null);
 	const [loading, setLoading] = useState<boolean>(true);
+	const [loginLoading, setLoginLoading] = useState<boolean>(false);
+	const [logoutLoading, setLogoutLoading] = useState<boolean>(false);
 
 	useEffect(() => {
 		const checkAuthentication = async () => {
@@ -37,20 +42,18 @@ const AuthProvider = (props: PropsType): JSX.Element => {
 		checkAuthentication();
 	}, []);
 
-	if (loading) {
-		return null;
-	}
-
 	const login = async (login: string, password: string) => {
+		setLoginLoading(true);
 		try {
-			const data: UserResponseType = await axios.post(
+			const response: UserResponseType = await axios.post(
 				'http://localhost:3000/login',
 				{ login, password },
 				{ withCredentials: true }
 			);
 
-			setUserData(data);
+			setUserData(response?.data?.user);
 		} catch (error) {
+			console.log('!!! login catch ', error);
 			if (error && error.response) {
 				const {
 					data: { message },
@@ -60,19 +63,28 @@ const AuthProvider = (props: PropsType): JSX.Element => {
 			}
 
 			return 'There was an error with connecting to server.';
+		} finally {
+			setLoginLoading(false);
 		}
 	};
 
 	const logout = async () => {
+		setLogoutLoading(true);
 		try {
 			await axios.post('http://localhost:3000/logout', {}, { withCredentials: true });
 			setUserData(null);
 		} catch (_e) {
 			return 'There was an error with connecting to server.';
+		} finally {
+			setLogoutLoading(false);
 		}
 	};
 
-	return <AuthContext.Provider value={{ data: userData, login, logout }}>{props.children}</AuthContext.Provider>;
+	return (
+		<AuthContext.Provider value={{ data: userData, login, logout, loading, loginLoading, logoutLoading }}>
+			{props.children}
+		</AuthContext.Provider>
+	);
 };
 
 export { AuthContext, AuthProvider };

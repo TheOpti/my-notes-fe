@@ -4,6 +4,7 @@ exports[`LoadingSpinner should render correctly without any issues 1`] = `
 <LoadingSpinner
   monocolor={false}
   size="medium"
+  withMask={false}
 >
   <svg
     className="spinner"

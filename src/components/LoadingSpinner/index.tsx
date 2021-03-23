@@ -10,10 +10,11 @@ const sizes = {
 
 type LoadingSpinnerPropsType = {
 	size: 'small' | 'medium' | 'large';
+	withMask?: boolean;
 	monocolor?: boolean;
 };
 const LoadingSpinner: React.FC<LoadingSpinnerPropsType> = (props: LoadingSpinnerPropsType) => {
-	const { size, monocolor } = props;
+	const { size, withMask, monocolor } = props;
 
 	const spinnerSize = sizes[size];
 
@@ -25,7 +26,7 @@ const LoadingSpinner: React.FC<LoadingSpinnerPropsType> = (props: LoadingSpinner
 		[styles.path]
 	);
 
-	return (
+	const loader = (
 		<svg
 			className={styles.spinner}
 			width={spinnerSize}
@@ -36,10 +37,17 @@ const LoadingSpinner: React.FC<LoadingSpinnerPropsType> = (props: LoadingSpinner
 			<circle className={circleClasses} fill="none" strokeWidth="6" strokeLinecap="round" cx="33" cy="33" r="30" />
 		</svg>
 	);
+
+	if (withMask) {
+		return <div className={styles.loaderMask}>{loader}</div>;
+	}
+
+	return loader;
 };
 
 LoadingSpinner.defaultProps = {
 	size: 'medium',
+	withMask: false,
 	monocolor: false,
 };
 

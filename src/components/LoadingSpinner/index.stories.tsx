@@ -18,18 +18,6 @@ storiesOf('LoadingSpinner', module).add('All examples', () => {
 				<p>Small:</p>
 				<LoadingSpinner size="small" />
 			</div>
-			<div style={{ margin: 10 }}>
-				<p>Large, monocolor:</p>
-				<LoadingSpinner size="large" monocolor />
-			</div>
-			<div style={{ margin: 10 }}>
-				<p>Medium, monocolor:</p>
-				<LoadingSpinner size="medium" monocolor />
-			</div>
-			<div style={{ margin: 10 }}>
-				<p>Small, monocolor:</p>
-				<LoadingSpinner size="small" monocolor />
-			</div>
 		</div>
 	);
 });

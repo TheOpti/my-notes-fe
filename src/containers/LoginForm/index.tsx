@@ -5,6 +5,7 @@ import Input from 'components/Input';
 import styles from './styles.css';
 
 type PropsType = {
+	loading: boolean;
 	handleLogin: (login: string, password: string) => Promise<string>;
 };
 
@@ -12,7 +13,6 @@ type StateType = {
 	loginFormFields: {
 		[fieldName: string]: string;
 	};
-	loading: boolean;
 	errorMessage: string;
 };
 
@@ -26,7 +26,6 @@ class LoginForm extends Component<PropsType, StateType> {
 		passwordError: '',
 		errorMessage: '',
 		formSubmitted: false,
-		loading: false,
 	};
 
 	loginToApplication = async (): Promise<void> => {
@@ -49,14 +48,12 @@ class LoginForm extends Component<PropsType, StateType> {
 			return;
 		}
 
-		this.setState({ loading: true }, async () => {
-			try {
-				const response = await handleLogin(login, password);
-				this.setState({ errorMessage: response, loading: false });
-			} catch (error) {
-				this.setState({ errorMessage: error });
-			}
-		});
+		try {
+			const response = await handleLogin(login, password);
+			this.setState({ errorMessage: response });
+		} catch (error) {
+			this.setState({ errorMessage: error });
+		}
 	};
 
 	updateField = (fieldName: string, value: string): void => {
@@ -70,6 +67,8 @@ class LoginForm extends Component<PropsType, StateType> {
 	};
 
 	render(): React.ReactNode {
+		const { loading } = this.props;
+
 		const {
 			loginFormFields: { login, password },
 			loginError,
@@ -84,19 +83,23 @@ class LoginForm extends Component<PropsType, StateType> {
 					label="Login"
 					name="login"
 					value={login}
+					disabled={loading}
 					error={loginError}
 					handleChange={this.updateField}
 					formSubmitted={formSubmitted}
+					type="text"
 				/>
 				<Input
 					label="Password"
 					name="password"
 					value={password}
+					disabled={loading}
 					error={passwordError}
 					handleChange={this.updateField}
 					formSubmitted={formSubmitted}
+					type="password"
 				/>
-				<Button onClickHandler={this.loginToApplication} label="Login" classname={styles.loginBtn} />
+				<Button loading={loading} onClickHandler={this.loginToApplication} label="Login" classname={styles.loginBtn} />
 				{errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
 			</div>
 		);
