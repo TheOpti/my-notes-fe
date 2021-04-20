@@ -22,9 +22,11 @@ const SideMenuButton: React.FC<PropsType> = (props: PropsType) => {
 	});
 
 	return (
-		<div className={sideMenuBtnClasses} onClick={onClick}>
+		<div className={sideMenuBtnClasses} onClick={onClick} data-testid="sidemenu-button">
 			<Icon name={icon} size="medium" className={styles.icon} />
-			<div className={styles.title}>{title}</div>
+			<div className={styles.title} data-testid={`title-${expanded ? 'expanded' : 'collapsed'}`}>
+				{title}
+			</div>
 		</div>
 	);
 };
