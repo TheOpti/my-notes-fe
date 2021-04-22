@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SideMenuButton should not display text when button is not expanded 1`] = `
+<SideMenuButton
+  active={false}
+  expanded={false}
+  icon="tag"
+  onClick={[Function]}
+  title="Side menu title"
+>
+  <div
+    className="sideMenuButton collapsed"
+    data-testid="sidemenu-button"
+    onClick={[Function]}
+  >
+    <Icon
+      className="icon"
+      name="tag"
+      size="medium"
+    >
+      <i
+        className="root medium tag icon"
+        data-testid="icon-tag"
+      />
+    </Icon>
+    <div
+      className="title"
+      data-testid="title-collapsed"
+    >
+      Side menu title
+    </div>
+  </div>
+</SideMenuButton>
+`;
+
+exports[`SideMenuButton should render correctly without any issues 1`] = `
+<SideMenuButton
+  active={false}
+  expanded={false}
+  icon="tag"
+  onClick={[Function]}
+  title="Side menu title"
+>
+  <div
+    className="sideMenuButton collapsed"
+    data-testid="sidemenu-button"
+    onClick={[Function]}
+  >
+    <Icon
+      className="icon"
+      name="tag"
+      size="medium"
+    >
+      <i
+        className="root medium tag icon"
+        data-testid="icon-tag"
+      />
+    </Icon>
+    <div
+      className="title"
+      data-testid="title-collapsed"
+    >
+      Side menu title
+    </div>
+  </div>
+</SideMenuButton>
+`;

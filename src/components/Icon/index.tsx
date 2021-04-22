@@ -5,19 +5,19 @@ import styles from './styles.css';
 type IconPropsType = {
 	name: string;
 	size?: string;
-	customClassName?: string;
+	className?: string;
 };
 const Icon: React.FC<IconPropsType> = (props: IconPropsType) => {
-	const { name, size, customClassName } = props;
+	const { name, size, className } = props;
 
-	const iconClasses = cx(styles.root, styles[size], styles[name], customClassName);
+	const iconClasses = cx(styles.root, styles[size], styles[name], className);
 
-	return <i className={iconClasses} />;
+	return <i className={iconClasses} data-testid={`icon-${name}`} />;
 };
 
 Icon.defaultProps = {
 	size: 'medium',
-	customClassName: '',
+	className: '',
 };
 
 export default Icon;

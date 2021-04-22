@@ -5,17 +5,17 @@ import styles from './styles.css';
 
 type IconButtonPropsType = {
 	iconName: string;
-	customClassName?: string;
-	onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
+	className?: string;
+	onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
 };
 const IconButton: React.FC<IconButtonPropsType> = (props: IconButtonPropsType) => {
-	const { iconName, customClassName, onClick } = props;
+	const { iconName, className, onClick } = props;
 
-	const iconButtonClasses = cx(styles.root, customClassName);
+	const iconButtonClasses = cx(styles.root, className);
 
 	return (
 		<div className={iconButtonClasses} onClick={onClick}>
-			<Icon name={iconName} customClassName={styles.icon} />
+			<Icon name={iconName} className={styles.icon} />
 		</div>
 	);
 };

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon should render correctly without any issues 1`] = `
+<Icon
+  className=""
+  name="pencil"
+  size="small"
+>
+  <i
+    className="root small pencil"
+    data-testid="icon-pencil"
+  />
+</Icon>
+`;

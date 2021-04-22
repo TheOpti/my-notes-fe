@@ -1,0 +1,15 @@
+.sideMenu {
+	display: flex;
+	flex-direction: column;
+	padding-top: 8px;
+	position: fixed;
+	top: 64px;
+	left: 0;
+	bottom: 0;
+	transition: width 0.3s;
+	width: 48px;
+}
+
+.expanded {
+	width: 280px;
+}
