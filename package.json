@@ -9,6 +9,7 @@
     "start:proxy": "nodemon proxy/index.js",
     "start:all": "concurrently \"npm start\" \"npm run start:proxy\"",
     "build": "webpack --config webpack/webpack.prod.js",
+		"test:ci": "npm run prettier:check && npm run eslint && npm run test",
     "test": "jest",
     "eslint": "eslint '*/**/*.{js,ts,tsx}'",
     "prettier:check": "prettier \"@(src)/**/*.@(tsx)\" --check",

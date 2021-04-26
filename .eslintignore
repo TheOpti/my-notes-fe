@@ -2,3 +2,5 @@
 **/*.html
 webpack/
 proxy/
+node_modules/
+dist/
