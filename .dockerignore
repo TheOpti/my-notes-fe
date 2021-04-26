@@ -1,0 +1,6 @@
+.husky/
+.idea/
+.storybook/
+dist/
+node_modules/
+proxy/
