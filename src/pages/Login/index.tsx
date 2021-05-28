@@ -61,7 +61,7 @@ const Login = (): JSX.Element => {
 					<Button
 						disabled={loginLoading}
 						onClickHandler={toggleActiveSection}
-						classname={styles.button}
+						className={styles.button}
 						label={switcherBtnTitle}
 						color="outlined"
 					/>

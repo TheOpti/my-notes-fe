@@ -2,7 +2,7 @@
 
 exports[`Button should render correctly without any issues 1`] = `
 <Button
-  classname=""
+  className=""
   color="raised"
   label="Label"
   onClickHandler={[Function]}

@@ -17,6 +17,9 @@ storiesOf('Button', module)
 				<Button label="Outlined button" color="outlined" />
 			</div>
 			<div style={btnWrapperStyle}>
+				<Button label="Link button" color="link" />
+			</div>
+			<div style={btnWrapperStyle}>
 				<Button label="Raised with loading button" loading color="raised" />
 			</div>
 			<div style={btnWrapperStyle}>

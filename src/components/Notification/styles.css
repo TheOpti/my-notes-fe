@@ -1,0 +1,52 @@
+.notification {
+	width: 512px;
+	height: 64px;
+
+	display: flex;
+	align-items: center;
+	font-size: 14px;
+
+	background-color: #323232;
+	border: 4px solid transparent;
+	margin-top: 10px;
+	padding: 10px 10px 10px 20px;
+	border-radius: 8px;
+	transition: all 0.3s;
+	color: white;
+}
+
+.notificationTitle {
+	color: white;
+	flex-grow: 1;
+	padding-right: 12px;
+}
+
+.rollbackBtn {
+	margin-right: 16px;
+	color: #ffbb00;
+	transition: all 0.3s;
+	font-size: 14px;
+}
+
+.rollbackBtn:hover {
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+.closeIconBtn {
+	background-color: transparent;
+	height: 36px;
+	width: 36px;
+}
+
+.closeIconBtn:hover {
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+.closeIconBtn:hover > .closeIcon {
+	color: white;
+}
+
+.closeIcon {
+	font-size: 18px;
+	color: white;
+}

@@ -8,17 +8,17 @@ import styles from './styles.css';
 type ButtonPropsType = {
 	label: string;
 	onClickHandler?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-	color?: 'raised' | 'outlined';
-	classname?: string;
+	color?: 'raised' | 'outlined' | 'link';
+	className?: string;
 	disabled?: boolean;
 	loading?: boolean;
 };
 const Button: React.FC<ButtonPropsType> = (props: ButtonPropsType) => {
-	const { label, onClickHandler, color, classname, disabled, loading } = props;
+	const { label, onClickHandler, color, className, disabled, loading, ...rest } = props;
 
 	const disabledState = disabled || loading;
 
-	const btnClasses = cx(styles.root, styles[color], classname, {
+	const btnClasses = cx(styles.root, styles[color], className, {
 		[styles.disabled]: disabledState,
 	});
 
@@ -27,7 +27,7 @@ const Button: React.FC<ButtonPropsType> = (props: ButtonPropsType) => {
 	};
 
 	return (
-		<button onClick={onClickHandler} className={btnClasses} type="button" disabled={disabledState}>
+		<button onClick={onClickHandler} className={btnClasses} type="button" disabled={disabledState} {...rest}>
 			<span className={styles.content}>
 				{loading && <LoadingSpinner size="small" monocolor />}
 				<span style={labelStyles}>{label}</span>
@@ -39,7 +39,7 @@ const Button: React.FC<ButtonPropsType> = (props: ButtonPropsType) => {
 Button.defaultProps = {
 	label: '',
 	color: 'raised',
-	classname: '',
+	className: '',
 };
 
 export default Button;
