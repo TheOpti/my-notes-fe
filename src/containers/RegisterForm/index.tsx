@@ -138,7 +138,7 @@ class RegisterForm extends Component<PropsType, StateType> {
 				<Button
 					onClickHandler={this.register}
 					label="Create new account"
-					classname={styles.registerBtn}
+					className={styles.registerBtn}
 					loading={loading}
 				/>
 				{registerFormErrors.general && <div className={styles.errorMessage}>{registerFormErrors.general}</div>}

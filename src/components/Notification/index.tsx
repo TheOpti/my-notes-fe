@@ -4,13 +4,13 @@ import IconButton from 'components/IconButton';
 
 import styles from './styles.css';
 
-type ButtonPropsType = {
+type PropsType = {
 	title: string;
 	revocable?: boolean;
 	rollbackAction?: () => void;
 	hideNotification: () => void;
 };
-const Notification: React.FC<ButtonPropsType> = (props: ButtonPropsType) => {
+const Notification: React.FC<PropsType> = (props: PropsType) => {
 	const { title, revocable, rollbackAction, hideNotification } = props;
 
 	const rollback = () => {
@@ -19,24 +19,27 @@ const Notification: React.FC<ButtonPropsType> = (props: ButtonPropsType) => {
 
 	return (
 		<div className={styles.notification} data-testid="notification">
-			<div className={styles.notificationTitle} data-testid="title">
-				{title}
-			</div>
-			{revocable && (
-				<Button
-					className={styles.rollbackBtn}
-					onClickHandler={rollback}
-					color="link"
-					label="Rollback"
-					data-testid="rollback-btn"
+			<div className={styles.content}>
+				<div className={styles.title} data-testid="title">
+					{title}
+				</div>
+				{revocable && (
+					<Button
+						className={styles.rollbackBtn}
+						onClickHandler={rollback}
+						color="link"
+						label="Rollback"
+						data-testid="rollback-btn"
+					/>
+				)}
+				<IconButton
+					onClick={hideNotification}
+					iconName="cancel"
+					className={styles.closeIconBtn}
+					iconClassName={styles.closeIcon}
 				/>
-			)}
-			<IconButton
-				onClick={hideNotification}
-				iconName="cancel"
-				className={styles.closeIconBtn}
-				iconClassName={styles.closeIcon}
-			/>
+			</div>
+			<div className={styles.progressBar} data-testid="progress-bar" />
 		</div>
 	);
 };

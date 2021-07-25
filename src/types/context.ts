@@ -11,3 +11,15 @@ export type UserType = {
 	login: string;
 	type: string;
 };
+
+export type NotificationType = {
+	id: string;
+	title: string;
+	revocable: boolean;
+};
+
+export type NotificationsContextType = {
+	notifications: Array<NotificationType>;
+	addNotification: (notification: NotificationType) => void;
+	removeNotification: (id: string) => void;
+};

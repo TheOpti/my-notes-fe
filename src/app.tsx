@@ -3,6 +3,7 @@ import { AuthContext } from 'context/auth';
 import type { AuthContextType } from 'types/context';
 
 import Loader from 'components/LoadingSpinner';
+import NotificationsContainer from 'components/NotificationsContainer';
 
 import Application from './pages/Application';
 import Login from './pages/Login';
@@ -14,7 +15,12 @@ function App(): JSX.Element {
 		return <Loader size="large" />;
 	}
 
-	return contextData.data ? <Application /> : <Login />;
+	return (
+		<>
+			{contextData.data ? <Application /> : <Login />}
+			<NotificationsContainer />
+		</>
+	);
 }
 
 export default App;

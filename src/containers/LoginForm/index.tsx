@@ -99,7 +99,7 @@ class LoginForm extends Component<PropsType, StateType> {
 					formSubmitted={formSubmitted}
 					type="password"
 				/>
-				<Button loading={loading} onClickHandler={this.loginToApplication} label="Login" classname={styles.loginBtn} />
+				<Button loading={loading} onClickHandler={this.loginToApplication} label="Login" className={styles.loginBtn} />
 				{errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
 			</div>
 		);

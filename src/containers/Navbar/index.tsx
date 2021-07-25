@@ -7,6 +7,7 @@ import styles from './styles.css';
 type PropsType = {
 	setSideMenuExpanded: (Function) => void;
 };
+
 const Navbar = ({ setSideMenuExpanded }: PropsType): JSX.Element => {
 	return (
 		<div className={styles.navbar}>

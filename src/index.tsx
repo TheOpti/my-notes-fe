@@ -2,15 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { AuthProvider } from './context/auth';
+import { NotificationsProvider } from './context/notifications';
 import App from './app';
 
 import './fonts.css';
 import './index.css';
 
 ReactDOM.render(
-	<AuthProvider>
-		<App />
-	</AuthProvider>,
+	<NotificationsProvider>
+		<AuthProvider>
+			<App />
+		</AuthProvider>
+	</NotificationsProvider>,
 	document.getElementById('root')
 );
 

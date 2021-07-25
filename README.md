@@ -24,3 +24,15 @@ $ docker ps -a
 CONTAINER ID    IMAGE                COMMAND                  CREATED         STATUS          PORTS                NAMES
 03b77554d6dc    my-notes-fe:latest   "/docker-entrypoint.…"   5 seconds ago   Up 4 seconds    0.0.0.0:80->80/tcp   infallible_bhaskara
 ```
+
+### Running locally
+
+You can run the app locally without using backend (node.js server with mongodb database).
+All you need to do is to run both the frontend and the proxy server
+which will serve local data you can work with.
+
+Example users:
+
+```
+user1 / pass1
+```
